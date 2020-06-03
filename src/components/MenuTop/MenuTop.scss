@@ -1,0 +1,22 @@
+.menu-top{
+    background-color: hsl(215,34%,15%);
+    .search-movie{
+        width: 500px;
+    }
+    .navbar-light .navbar-brand{
+        span{
+            color: #ffffff;
+        }
+        font-family: 'Poppins', sans-serif;
+        color: #28a745;
+        font-size: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        &:hover{
+            color: #28a745;
+            span{
+                color: #28a745;
+            }
+        }
+    }
+}
