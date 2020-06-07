@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import './App.scss';
 import MenuTop from './components/MenuTop';
 import Footer from './components/Footer';
-import axios from 'axios'
-import Movie from './components/Movie';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import MovieInfor from './components/MovieInfor';
+// import Home from './pages/Home';
+
+const Home = React.lazy(() => import('./pages/Home'))
 
 function App() {
-  const [movies, setMovies] = useState([]);
-  useEffect(() => {
-    const url = "https://api.themoviedb.org/4/list/1?api_key=5dd50dcd383eb11b1fa40f4e563891b1"
-    axios.get(url)
-        .then(response => setMovies(response.data.results))
-        console.log("data:", movies);
-  }, []);
-  
   return (
     <div className="App">
-      <MenuTop/>
-      <Movie movies={movies}/>
-      <Footer/>
+      <Suspense fallback={<div>Loading ...</div>}>
+      <Router>
+          <MenuTop/>
+          <Switch>
+          <Route path="/" exact component={Home}></Route>
+          <Route path="/movie-infor" component={MovieInfor}></Route>
+          </Switch>
+          <Footer/>
+      </Router>
+      </Suspense>
     </div>
   );
 }

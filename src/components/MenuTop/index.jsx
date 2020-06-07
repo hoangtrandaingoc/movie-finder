@@ -8,10 +8,7 @@ import {
 } from 'reactstrap';
 import SearchMovie from '../SearchMovie';
 
-const Example = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+const MenuTop = () => {
 
   return (
     <div className="menu-top">
@@ -27,4 +24,4 @@ const Example = (props) => {
   );
 }
 
-export default Example;
+export default MenuTop;

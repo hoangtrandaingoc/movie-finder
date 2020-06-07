@@ -1,39 +1,45 @@
 import React from 'react';
-import { Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import '../Pagination/Pagination.scss'
+import PropTypes from 'prop-types';
+import '../Pagination/Pagination.scss';
 
-const Example = (props) => {
-  return (
-    <Pagination aria-label="Page navigation example">
-    <PaginationItem>
-        <PaginationLink first href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink previous href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">
-          1
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">
-          2
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">
-          3
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink next href="#" />
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink last href="#" />
-      </PaginationItem>
-    </Pagination>
-  );
+Pagination.propTypes = {
+    pagination: PropTypes.object.isRequired,
+    onPageChange: PropTypes.func,
+};
+
+Pagination.defaultProps = {
+    onPageChange: null,
+};
+
+function Pagination(props) {
+    const {pagination, onPageChange} = props;
+    const {page, totalPages} = pagination;
+
+    function handlePageChange(newPage){
+      if(onPageChange){
+        onPageChange(newPage);
+      }
+    }
+    
+    return (
+        <div className="pagination">
+            <button
+                className="btn-prev"
+                disabled={page === 1}
+                onClick={()=>handlePageChange(page-1)}
+            >
+                &lt; Prev
+            </button>
+
+            <button
+                className="btn-next"
+                disabled={page >= totalPages}
+                onClick={()=>handlePageChange(page+1)}
+            >
+                Next &gt;
+            </button>
+        </div>
+    );
 }
 
-export default Example;
+export default Pagination;

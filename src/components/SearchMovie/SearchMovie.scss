@@ -1,14 +1,16 @@
 .search-movie{
+    color: #ffff;
     input[name="movie"]{
-        width: 70%;
+        width: 68%;
         background-color: transparent;
-        border: 0;
+        border: none;
         border-bottom: 1px solid #28a745;
         border-radius: 0;
         color: #ffffff;
     
         &:-webkit-autofill {
-            -webkit-box-shadow: inset 0 0 0px 9999px white; //remove background key word
+            -webkit-box-shadow: inset 0 0 0px 9999px hsl(215,34%,15%); //remove background key word
+            -webkit-text-fill-color: #ffffff;
         }
     }
     input:focus{
@@ -17,10 +19,28 @@
         outline: none;
 
         &:-webkit-autofill {
-            -webkit-box-shadow: inset 0 0 0px 9999px white; //remove background key word
+            -webkit-box-shadow: inset 0 0 0px 9999px hsl(215,34%,15%); //remove background key word
+            -webkit-text-fill-color: #ffffff;
         }
     }
-    // input:blur{
 
-    // }
+}
+
+
+.search-header{
+    input{
+        width: 85%;
+        background-color: transparent;
+        padding: 15px;
+        border: none;
+        &:focus{
+            border-radius: 5px;
+            background-color: transparent;
+            outline: none;
+            &:-webkit-autofill {
+                -webkit-box-shadow: inset 0 0 0px 9999px white; //remove background key word
+            }
+        }
+    }
+
 }

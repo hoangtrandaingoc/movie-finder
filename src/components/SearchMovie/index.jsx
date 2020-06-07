@@ -1,24 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useRef, useContext } from 'react';
 import '../SearchMovie/SearchMovie.scss';
+import { SearchContext } from '../../contexts/SearchContext';
 
-SearchMovie.propTypes = {
-    onSubmit: PropTypes.func,
-};
 
-SearchMovie.defaulProps ={
-    onSubmit: null,
-};
 
-function SearchMovie(props) {
+function SearchMovie() {
+    const {handleSearchMovie, handleSubmit} = useContext(SearchContext);
+
     return (
-        <form className="search-movie">
+        <div className="search-movie">
             <input 
                 type="search" 
                 name="movie"
                 placeholder="Search movie..."
+                onChange={handleSearchMovie}
+                onKeyUp={handleSubmit}
             />
-        </form>
+        </div>
     );
 }
 
